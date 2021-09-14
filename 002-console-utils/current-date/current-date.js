@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const currentDate = new Date();
 const args = process.argv.splice(2, 3);
 

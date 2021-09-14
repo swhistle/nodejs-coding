@@ -1,11 +1,12 @@
 {
   "name": "current-date",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Display current date in your command line",
+  "main": "current-date.js",
   "author": "Alexander S.",
-  "license": "ISC"
+  "license": "ISC",
+  "bin": {
+    "current": "./current-date.js"
+  },
+  "dependencies": {}
 }
