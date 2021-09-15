@@ -1,0 +1,14 @@
+{
+  "name": "guess-number",
+  "version": "0.0.1",
+  "description": "Guess a number between 0 and 100",
+  "main": "guess-number.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander S.",
+  "license": "ISC",
+  "bin": {
+    "guessnumber": "./guess-number.js"
+  }
+}
