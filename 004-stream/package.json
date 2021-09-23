@@ -1,0 +1,11 @@
+{
+  "name": "logging",
+  "version": "0.0.1",
+  "description": "Logging cli input and output",
+  "main": "logging.js",
+  "author": "Alexander S.",
+  "license": "ISC",
+  "bin": {
+    "logging": "./logging.js"
+  }
+}
