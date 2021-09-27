@@ -1,0 +1,14 @@
+{
+  "name": "current-weather",
+  "version": "1.0.0",
+  "description": "Simple http-client module which requests current weather from public api and display it in console",
+  "main": "current-weather.js",
+  "author": "Alexander S.",
+  "license": "ISC",
+  "scripts": {
+    "start": "node current-weather.js",
+    "dev": "node -r dotenv/config current-weather.js"},
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
