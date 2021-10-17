@@ -1,0 +1,43 @@
+1)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker pull node:15.14
+15.14: Pulling from library/node
+bfde2ec33fbc: Pull complete 
+787f5e2f1047: Pull complete 
+7b6173a10eb8: Pull complete 
+dc05be471d51: Pull complete 
+55fab5cadd3c: Pull complete 
+bd821d20ef8c: Pull complete 
+6041b69671c6: Pull complete 
+989c5d2d2313: Pull complete 
+4b57d41e8391: Pull complete 
+Digest: sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Status: Downloaded newer image for node:15.14
+docker.io/library/node:15.14
+
+2)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker run -it --name mynode --env NAME=Alexander --env SURNAME=Svistunov node:15.14
+Welcome to Node.js v15.14.0.
+Type ".help" for more information.
+
+3)
+> const NAME = process.env.NAME;
+undefined
+> const SURNAME = process.env.SURNAME;
+undefined
+> console.log(`Hello, ${NAME} ${SURNAME}`);
+Hello, Alexander Svistunov
+
+4)
+NB-SVISTUNOV:~ aleksandr.svistunov$ docker stop mynode
+
+5)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker rm mynode
+mynode
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker ps -a
+CONTAINER ID   IMAGE                                                    COMMAND                  CREATED         STATUS                       PORTS     NAMES
+4e09cbdb8737   dev-aff-gateway_tests                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_tests
+6e4f74dfc97e   dev-aff-gateway_gateway                                  "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_gateway
+869c60b226cd   dev-aff-gateway_target                                   "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_target
+b62493bfbb9f   redis                                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_redis
+a5c5a5936dc8   postgres:9.5-alpine                                      "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_postgres
+17d48d20c0c6   vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   "/bin/sh -c 'echo Co…"   10 months ago   Exited (0) 10 months ago               vigilant_williamson
