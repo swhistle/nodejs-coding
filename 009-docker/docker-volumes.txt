@@ -1,0 +1,36 @@
+1)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker pull node:15.14
+15.14: Pulling from library/node
+Digest: sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Status: Image is up to date for node:15.14
+docker.io/library/node:15.14
+
+2)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker run -it --name first_node -v ${PWD}:/var/first -w /var/first node:15.14
+
+3)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker run -it --name second_node -v ${PWD}:/var/second -w /var/second node:15.14
+
+4)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker exec first_node touch data/file1.txt
+
+5) touch data/host-file.txt
+
+6)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker exec second_node ls data
+file1.txt
+host-file.txt
+
+7)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker stop first_node second_node
+first_node
+
+second_node
+
+8)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker rm first_node second_node
+first_node
+second_node
+
+9)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker rmi node:15.14
