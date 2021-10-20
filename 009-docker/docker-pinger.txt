@@ -1,0 +1,136 @@
+1)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker pull busybox:latest
+latest: Pulling from library/busybox
+Digest: sha256:f7ca5a32c10d51aeda3b4d01c61c6061f497893d7f6628b92f822f7117182a57
+Status: Image is up to date for busybox:latest
+docker.io/library/busybox:latest
+
+2)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker run --name pinger busybox ping -c 7 netology.ru
+PING netology.ru (172.67.43.83): 56 data bytes
+64 bytes from 172.67.43.83: seq=0 ttl=37 time=6.182 ms
+64 bytes from 172.67.43.83: seq=1 ttl=37 time=13.027 ms
+64 bytes from 172.67.43.83: seq=2 ttl=37 time=12.677 ms
+64 bytes from 172.67.43.83: seq=3 ttl=37 time=9.107 ms
+64 bytes from 172.67.43.83: seq=4 ttl=37 time=13.007 ms
+64 bytes from 172.67.43.83: seq=5 ttl=37 time=13.200 ms
+64 bytes from 172.67.43.83: seq=6 ttl=37 time=13.244 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+
+3)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker ps -a
+CONTAINER ID   IMAGE                                                    COMMAND                  CREATED              STATUS                          PORTS     NAMES
+03303bf61c61   busybox                                                  "ping -c 7 netology.…"   About a minute ago   Exited (0) About a minute ago             pinger
+4e09cbdb8737   dev-aff-gateway_tests                                    "docker-entrypoint.s…"   10 months ago        Exited (137) 10 months ago                aff-gateway_tests
+6e4f74dfc97e   dev-aff-gateway_gateway                                  "docker-entrypoint.s…"   10 months ago        Exited (137) 10 months ago                aff-gateway_gateway
+869c60b226cd   dev-aff-gateway_target                                   "docker-entrypoint.s…"   10 months ago        Exited (137) 10 months ago                aff-gateway_target
+b62493bfbb9f   redis                                                    "docker-entrypoint.s…"   10 months ago        Exited (137) 10 months ago                aff-gateway_redis
+a5c5a5936dc8   postgres:9.5-alpine                                      "docker-entrypoint.s…"   10 months ago        Exited (137) 10 months ago                aff-gateway_postgres
+17d48d20c0c6   vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   "/bin/sh -c 'echo Co…"   10 months ago        Exited (0) 10 months ago                  vigilant_williamson
+
+4)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker logs pinger
+PING netology.ru (172.67.43.83): 56 data bytes
+64 bytes from 172.67.43.83: seq=0 ttl=37 time=6.182 ms
+64 bytes from 172.67.43.83: seq=1 ttl=37 time=13.027 ms
+64 bytes from 172.67.43.83: seq=2 ttl=37 time=12.677 ms
+64 bytes from 172.67.43.83: seq=3 ttl=37 time=9.107 ms
+64 bytes from 172.67.43.83: seq=4 ttl=37 time=13.007 ms
+64 bytes from 172.67.43.83: seq=5 ttl=37 time=13.200 ms
+64 bytes from 172.67.43.83: seq=6 ttl=37 time=13.244 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+
+5)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker start pinger
+pinger
+
+6)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker ps -a
+CONTAINER ID   IMAGE                                                    COMMAND                  CREATED         STATUS                       PORTS     NAMES
+03303bf61c61   busybox                                                  "ping -c 7 netology.…"   3 minutes ago   Exited (0) 8 seconds ago               pinger
+4e09cbdb8737   dev-aff-gateway_tests                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_tests
+6e4f74dfc97e   dev-aff-gateway_gateway                                  "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_gateway
+869c60b226cd   dev-aff-gateway_target                                   "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_target
+b62493bfbb9f   redis                                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_redis
+a5c5a5936dc8   postgres:9.5-alpine                                      "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_postgres
+17d48d20c0c6   vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   "/bin/sh -c 'echo Co…"   10 months ago   Exited (0) 10 months ago               vigilant_williamson
+
+
+7)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker logs pinger
+PING netology.ru (172.67.43.83): 56 data bytes
+64 bytes from 172.67.43.83: seq=0 ttl=37 time=6.182 ms
+64 bytes from 172.67.43.83: seq=1 ttl=37 time=13.027 ms
+64 bytes from 172.67.43.83: seq=2 ttl=37 time=12.677 ms
+64 bytes from 172.67.43.83: seq=3 ttl=37 time=9.107 ms
+64 bytes from 172.67.43.83: seq=4 ttl=37 time=13.007 ms
+64 bytes from 172.67.43.83: seq=5 ttl=37 time=13.200 ms
+64 bytes from 172.67.43.83: seq=6 ttl=37 time=13.244 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 6.182/11.492/13.244 ms
+PING netology.ru (172.67.43.83): 56 data bytes
+64 bytes from 172.67.43.83: seq=0 ttl=37 time=5.845 ms
+64 bytes from 172.67.43.83: seq=1 ttl=37 time=13.106 ms
+64 bytes from 172.67.43.83: seq=2 ttl=37 time=8.399 ms
+64 bytes from 172.67.43.83: seq=3 ttl=37 time=13.568 ms
+64 bytes from 172.67.43.83: seq=4 ttl=37 time=12.979 ms
+64 bytes from 172.67.43.83: seq=5 ttl=37 time=13.546 ms
+64 bytes from 172.67.43.83: seq=6 ttl=37 time=12.849 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+
+8) 
+- общее количество запусков команды ping: 2
+- общее количество отправленых запросов: 14
+
+9)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker rm pinger
+pinger
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker ps -a
+CONTAINER ID   IMAGE                                                    COMMAND                  CREATED         STATUS                       PORTS     NAMES
+4e09cbdb8737   dev-aff-gateway_tests                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_tests
+6e4f74dfc97e   dev-aff-gateway_gateway                                  "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_gateway
+869c60b226cd   dev-aff-gateway_target                                   "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_target
+b62493bfbb9f   redis                                                    "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_redis
+a5c5a5936dc8   postgres:9.5-alpine                                      "docker-entrypoint.s…"   10 months ago   Exited (137) 10 months ago             aff-gateway_postgres
+17d48d20c0c6   vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   "/bin/sh -c 'echo Co…"   10 months ago   Exited (0) 10 months ago               vigilant_williamson
+
+
+10)
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker images
+REPOSITORY                                               TAG                    IMAGE ID       CREATED         SIZE
+busybox                                                  latest                 16ea53ea7c65   4 weeks ago     1.24MB
+postgres                                                 11-alpine              283664b901ee   3 months ago    188MB
+redis                                                    5-alpine               618083532dc7   6 months ago    29.3MB
+dev-aff-gateway_gateway                                  latest                 0c4eeea8327f   10 months ago   458MB
+dev-aff-gateway_target                                   latest                 0c4eeea8327f   10 months ago   458MB
+dev-aff-gateway_tests                                    latest                 0c4eeea8327f   10 months ago   458MB
+vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   latest                 e7cdbc66dcfa   10 months ago   458MB
+redis                                                    latest                 ef47f3b6dc11   10 months ago   104MB
+postgres                                                 9.5-alpine             fd7284fc2487   10 months ago   35.9MB
+node                                                     12.16.1-stretch-slim   6d9a17519d40   18 months ago   140MB
+
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:f7ca5a32c10d51aeda3b4d01c61c6061f497893d7f6628b92f822f7117182a57
+Deleted: sha256:16ea53ea7c652456803632d67517b78a4f9075a10bfdc4fc6b7b4cbf2bc98497
+Deleted: sha256:cfd97936a58000adc09a9f87adeeb7628a2c71d11c4998e6e7f26935fa0cd713
+
+NB-SVISTUNOV:009-docker aleksandr.svistunov$ docker images
+REPOSITORY                                               TAG                    IMAGE ID       CREATED         SIZE
+postgres                                                 11-alpine              283664b901ee   3 months ago    188MB
+redis                                                    5-alpine               618083532dc7   6 months ago    29.3MB
+dev-aff-gateway_gateway                                  latest                 0c4eeea8327f   10 months ago   458MB
+dev-aff-gateway_target                                   latest                 0c4eeea8327f   10 months ago   458MB
+dev-aff-gateway_tests                                    latest                 0c4eeea8327f   10 months ago   458MB
+vsc-affiliate-gateway-671dcc772c5b388be134b1bc6b763d46   latest                 e7cdbc66dcfa   10 months ago   458MB
+redis                                                    latest                 ef47f3b6dc11   10 months ago   104MB
+postgres                                                 9.5-alpine             fd7284fc2487   10 months ago   35.9MB
+node                                                     12.16.1-stretch-slim   6d9a17519d40   18 months ago   140MB
